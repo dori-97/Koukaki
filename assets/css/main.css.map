@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "main.css",
+	"sources": [
+		"../../sass/main.scss",
+		"../../sass/abstracts/_abstracts.scss",
+		"../../sass/abstracts/variables/colors.scss",
+		"../../sass/layouts/_frontpage.scss"
+	],
+	"names": [],
+	"mappings": "AGAA,AAAA,IAAI,CAAC;CACD,gBAAgB,EDDJ,KAAK;CCEpB;;AAED,AAAA,gBAAgB,CAAC;CACb,gBAAgB,EDLJ,KAAK;CCMpB"
+}
