@@ -1,9 +1,36 @@
-body {
-	background-color: green;
+@charset "UTF-8";
+body .story #place {
+	display: flex;
+	background-image: url("/wp-content/themes/foce-child/assets/images/studiokoukakibackground.png");
+	width: 100%;
+	min-height: 699px;
+	background-size: cover;
 }
 
-.main-navigation {
-	background-color: green;
+h3 {
+	opacity: 1;
+	/* Assure-toi que l'opacité est à 1 */
+	color: white;
+	/* Assure-toi que la couleur est visible sur le fond */
+	text-align: center;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	/* Ombre portée : décalage X, décalage Y, flou, couleur */
+}
+
+/* Gestion des classes pour le Fade in */
+.section {
+	opacity: 0;
+	/* Invisibilité initiale */
+	visibility: hidden;
+	transform: translateY(20px);
+	transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.section-visible {
+	opacity: 1;
+	/* Rendre complètement opaque */
+	visibility: visible;
+	transform: translateY(0);
 }
 
 /*# sourceMappingURL=main.css.map */
