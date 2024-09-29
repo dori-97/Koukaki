@@ -1,0 +1,17 @@
+/* Gestion des classes pour le Fade in */
+.section {
+    opacity: 0; /* Invisibilité initiale */
+    visibility: hidden;
+    transform: translateY(20px); // Légère translation vers le bas
+
+ transition:
+   opacity 1s ease-out,
+   transform 1s ease-out; // Transition pour l'effet de fade-in
+}
+
+.section-visible {
+    opacity: 1; /* Rendre complètement opaque */
+    visibility: visible;
+    transform: translateY(0); // Retour à la position normale
+
+}
