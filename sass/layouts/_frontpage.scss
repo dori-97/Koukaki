@@ -1,7 +1,132 @@
-body {
-    background-color: $primary-color;
+body .story #place {
+    display: flex;
+    background-image: url('/wp-content/themes/foce-child/assets/images/studiokoukakibackground.png');
+    width: 100%;
+    min-height: 699px;
+    background-size: cover;
 }
 
-.main-navigation {
-    background-color: $primary-color;
+/* -------- ETAPE 1 - Ajout des fleurs dans la section Oscars ----------- */ 
+
+#oscars {
+    position: relative;
+	display: flex;
+	padding-top: 7em;
+	padding-bottom: 1em;
+	overflow: hidden;
 }
+
+#oscars::before {
+    content: url('/wp-content/themes/foce/assets/images/Sunflower.png');
+    position: absolute;
+    left: 12em;
+    top: 5em;
+    z-index:2;
+    animation: rotateFlower 10s linear infinite; /* pour gérer rotation de cette fleur */
+}
+ 
+ 
+#oscars::after {
+    content: url('/wp-content/themes/foce/assets/images/orchid.png');
+    position: absolute;
+    right: -4em;
+    bottom: 20em;
+    animation: rotateFlower 10s linear infinite; /* pour gérer rotation de cette fleur */
+}
+
+/* ----- ETAPE 1 - Gestion du titre avec rectangle orange en dessous + img supplémentaire Oscars ------- */
+
+.oscars-title {
+    opacity: 1; 
+    color: white; 
+    font-size: 42px;
+    line-height: 52px; 
+    letter-spacing: -0.05em;
+    text-align: left;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Ombre portée : décalage X, décalage Y, flou, couleur */
+    padding: 100px 0;
+    background-image: url("../images/rectangle-orange.png");
+    margin-left: -50px; 
+    position: relative; 
+    z-index: 1; 
+    box-sizing: border-box;
+}
+
+.oscars-container {
+    display:flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 66.66%;
+    margin: auto;
+    gap:20px;
+}
+
+/* ------ ETAPE 2 : Gestion de la vidéo sur la bannière ------- */
+.banner {
+    background-image: none !important;
+    min-width:100% !important;
+    border: 1px solid red;
+    z-index:1;
+    overflow:hidden;
+    
+}
+
+.section .banner {
+    position: relative;
+    height: 100vh; /* Hauteur de l'en-tête */
+}
+
+.hero-video {
+    position: absolute;
+    object-fit: cover;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%); /* Centrer la vidéo */
+}
+
+.logo-image {
+    z-index: -1; /* Titre au-dessus de la vidéo */
+    border: 4px solid green;
+    /*animation: float 3s ease-in-out infinite;*/
+}
+
+.banner-fallback {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-size: cover; 
+    z-index: 0; 
+}
+
+
+/* Cache la vidéo de la bannière sur mobile + gestion responsive tablette */
+@media  (max-width: 768px) {
+    .hero-video {
+      display: none;
+    }
+    
+    .banner-fallback {
+        display: flex;
+    }
+
+    .banner img {
+        width: 100% !important;
+    }
+
+}    
+
+@media (max-width: 1024px) {
+    .hero-video {
+        width:1024px !important;
+    }
+}
+
+
