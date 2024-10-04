@@ -1,0 +1,28 @@
+.swiper-container {
+    width: 100%;
+    height: 600px;
+    background-color: darkgoldenrod;
+}
+
+/*.swiper-slide {
+    background: brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.swiper-slide.active {
+    border: 3px solid #ff0000;
+    transform: scale(1.1);  /* Petit zoom pour le slide actif */
+    transition: transform 0.3s ease; /* Transition fluide pour l'effet de zoom */
+  }
+
+.swipper-button-next .swipper-button-prev {
+background-color: rgba(255, 255, 255, 0.8); /* Pour voir les boutons */
+  border-radius: 50%; /* Arrondir les coins */
+  padding: 10px; /* Ajout d'un peu d'espace */
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    color: #000; /* Couleur des flèches */
+  }

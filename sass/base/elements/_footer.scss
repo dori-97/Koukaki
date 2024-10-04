@@ -1,0 +1,11 @@
+/* Enlever les fleurs du footer */
+.site-footer::after {
+    content: none !important;
+}
+
+.site-footer::before {
+    content: none !important;
+}
+
+
+ 
