@@ -30,3 +30,18 @@ if ( get_stylesheet() !== get_template() ) {
         return get_option( 'theme_mods_' . get_template(), $default );
     } );
 }
+
+//---------- ETAPE 3 : importation script Swiper JS ------ //
+
+function enqueue_swiper_assets() {
+    // Enqueue Swiper CSS
+    wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper@9/swiper-bundle.min.css', array(), null);
+
+    // Enqueue Swiper JS
+    wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper@9/swiper-bundle.min.js', array(), null, true);
+
+    // Ajouter son propre code Swiper
+    wp_enqueue_script('custom-swiper-init', get_stylesheet_directory_uri() . '/js/custom-swiper-init.js', array('swiper-js'), null, true);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_swiper_assets');
