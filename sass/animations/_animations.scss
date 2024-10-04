@@ -1,4 +1,4 @@
-/* Gestion des Fade in et fade Down des sections */
+/* ----- ETAPE 1 : Gestion des Fade in et fade Down des sections ----- */
 
 @keyframes fadeIn {
     from {
@@ -37,11 +37,92 @@
 
 .banner{
     opacity:0;
-    animation: fadeDown 1s ease-in forwards; /* L'animation dure 1 seconde */
+    animation: fadeDown 1s ease-in forwards; 
    transform: translateY(-200px);
 }
 
 .banner-visible {
     opacity:1;
-    transform:translateY(0); // Retour position normale // 
+    transform:translateY(0); 
+}
+
+/* ---- ETAPE 1 : Faire tourner toutes les fleurs de la page ------*/
+
+@keyframes rotateFlower {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+      
+.story__article::after {
+    animation: rotateFlower 10s linear infinite;
+}
+
+.story h2::after {
+    left:-6.4em;
+    animation: rotateFlower 10s linear infinite; 
+}
+
+.story h2::before{
+    left:-7em;
+}
+
+#studio h2::before {
+    animation: rotateFlower 10s linear infinite;
+}
+
+#studio h2::after {
+    animation: rotateFlower 10s linear infinite;
+}
+
+.site-footer ul::after {
+    animation: rotateFlower 10s linear infinite;
+}
+
+
+
+/*----- ETAPE 1 : Gestion des classes pour apparition des titres ---- */
+
+.section-title {
+    opacity: 0; 
+    transform: translateY(150px); 
+    transition: opacity 1s ease-out, transform 1s ease-out; 
+}
+
+.section-title-visible {
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+
+/* ------ ETAPE 2 : Titre flottant ------*/
+@keyframes float {
+    0% {
+        transform: translateY(0); /* Position initiale */
+    }
+    50% {
+        transform: translateY(-30px); /* Bouge un peu */
+    }
+    100% {
+        transform: translateY(0); /* Retourne à la position initiale */
+    }
+}
+
+/*.floating-title {
+    font-size: 3rem;
+    text-align: center;
+    color: #333;
+    animation: float 3s ease-in-out infinite;
+    border: 1px solid red;
+}*/
+
+// --------- ETAPE 2 : Classe pour l'effet de parallaxe ------- //
+
+.parallax {
+    position: relative; /* Assure que les éléments parallaxes sont bien positionnés */
+    z-index: 1; /* Place les éléments devant la vidéo */
+    width: 100%; /* Pour s'assurer qu'ils prennent toute la largeur */
 }
