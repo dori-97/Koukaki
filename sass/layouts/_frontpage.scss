@@ -1,12 +1,5 @@
-body .story #place {
-    display: flex;
-    background-image: url('/wp-content/themes/foce-child/assets/images/studiokoukakibackground.png');
-    width: 100%;
-    min-height: 699px;
-    background-size: cover;
-}
-
 /* -------- ETAPE 1 - Ajout des fleurs dans la section Oscars ----------- */ 
+
 
 #oscars {
     position: relative;
@@ -19,8 +12,8 @@ body .story #place {
 #oscars::before {
     content: url('/wp-content/themes/foce/assets/images/Sunflower.png');
     position: absolute;
-    left: 12em;
-    top: 5em;
+    left: 10.2em;
+    top: 2em;
     z-index:2;
     animation: rotateFlower 10s linear infinite; /* pour gérer rotation de cette fleur */
 }
@@ -28,9 +21,11 @@ body .story #place {
  
 #oscars::after {
     content: url('/wp-content/themes/foce/assets/images/orchid.png');
+    width:172px;
+    height:168px;
     position: absolute;
     right: -4em;
-    bottom: 20em;
+    bottom: 195px;
     animation: rotateFlower 10s linear infinite; /* pour gérer rotation de cette fleur */
 }
 
@@ -39,17 +34,28 @@ body .story #place {
 .oscars-title {
     opacity: 1; 
     color: white; 
+    flex: 1;
+    margin-right: 1em;
+    overflow: visible;
+    position: relative;
+
+
+    h3 {
     font-size: 42px;
     line-height: 52px; 
     letter-spacing: -0.05em;
     text-align: left;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Ombre portée : décalage X, décalage Y, flou, couleur */
-    padding: 100px 0;
     background-image: url("../images/rectangle-orange.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding:1.2em; /* mettre le titre sur 3 lignes */
+    width: calc(100% + 50px);
     margin-left: -50px; 
     position: relative; 
     z-index: 1; 
     box-sizing: border-box;
+    }
 }
 
 .oscars-container {
@@ -61,19 +67,18 @@ body .story #place {
     gap:20px;
 }
 
+
 /* ------ ETAPE 2 : Gestion de la vidéo sur la bannière ------- */
 .banner {
     background-image: none !important;
     min-width:100% !important;
-    border: 1px solid red;
     z-index:1;
     overflow:hidden;
-    
 }
 
 .section .banner {
     position: relative;
-    height: 100vh; /* Hauteur de l'en-tête */
+    height: 100vh; /* Hauteur de l'en-tête en vh pour adaptation à la fenetre d'affichage */
 }
 
 .hero-video {
@@ -87,12 +92,6 @@ body .story #place {
     height: auto;
     z-index: -1;
     transform: translate(-50%, -50%); /* Centrer la vidéo */
-}
-
-.logo-image {
-    z-index: -1; /* Titre au-dessus de la vidéo */
-    border: 4px solid green;
-    /*animation: float 3s ease-in-out infinite;*/
 }
 
 .banner-fallback {
@@ -128,5 +127,65 @@ body .story #place {
         width:1024px !important;
     }
 }
+
+/* ------- ETAPE 4 : Changement image de fond de section + ajout des nuages et positionnement -------- */
+
+#place {
+    position:relative;
+    z-index:1;
+    background-image: url('/wp-content/themes/foce-child/assets/images/studiokoukakibackground.png');
+    width: 100%;
+    min-height: 699px;
+    background-size: cover;
+    display:flex;
+
+    h3 {
+        z-index: 3;
+        padding-bottom:40px !important;
+        background-image: url('/wp-content/themes/foce/assets/images/orange_place_bg.png');
+    }
+    > div {
+        max-width: 580px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-left: 6em;
+        
+        p {
+          padding-left: 5em;
+          margin-top:0;
+          z-index: 3;
+        }
+    }
+    
+    .clouds {
+        flex-direction:column;
+        align-items: flex-end;
+        margin-left: auto; /* pour décaler les nuages à droite */
+        gap:50px;
+        justify-content: flex-start;
+        margin-top:100px;
+        width:100%;
+        z-index: 2;
+        transition: transform 2s ease;
+        transform: translateX(-250px); /* position initiale */
+    }
+   
+    .little-cloud {
+        margin-top: 0;
+        align-self: flex-start; /* aligne le petit nuage à gauche */
+    }
+
+    .blur {
+        filter: blur(12px); /* pour appliquer effet de flou sur nuages */
+    } 
+}
+
+
+      
+   
+   
+
 
 

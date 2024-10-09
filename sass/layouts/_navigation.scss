@@ -1,0 +1,342 @@
+/* -------- ETAPE 5 : Réalisation du header modifié -------  */
+
+/* gère positionnement de l'en-tête */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; 
+}
+   
+   
+/* gère positionnement de barre nav */
+.main-navigation {
+    position: relative;
+    z-index: 2000 !important; /* Supérieur à l'en-tête */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: pink;
+
+    /*button {
+       margin-right:100px;
+    }*/
+
+    
+}
+      
+   
+/*  adaptation responsive mobile  */
+/*@media screen and (max-width: 782px) {
+    .main-navigation button {
+      margin-right: 20px;
+    }
+}*/
+   
+   
+/* gérer le titre du site */
+.site-title {
+    flex-grow: 1; /* prend tout l'espace dispo */
+    text-align: center;
+    margin: 0;
+}
+   
+   
+   
+/* forcer affichage du menu toggle */
+.menu-toggle,
+.menu-toggle span {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+   
+   
+/* gérer le bouton du menu toggle */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 20px;
+    background: none;
+    border: 8px solid black;
+    cursor: pointer;
+    position: relative;
+    z-index:2005;
+}
+   
+   
+/* gérer les lignes du menu toggle */
+.menu-toggle span {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 0;
+}
+   
+   
+/* positionnement initial des lignes du menu toggle */
+.menu-toggle span:nth-child(1) {
+    top: 0;
+}
+.menu-toggle span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.menu-toggle span:nth-child(3) {
+    bottom: 0;
+}
+   
+   
+/* transformation des lignes en croix pour fermer le menu toggle quand il est ouvert */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0 !important; /* pour pas voir la ligne en trop pour la croix */
+}
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/*.site-title {
+    z-index:2005;
+}*/
+   
+.newMenu-container {
+    position: fixed;
+    top: -100%; /* commence en dehors de la vue */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 245, 233, 1);
+    z-index: 1000; /* inférieur à la main navigation */
+    transition:
+      top 0.5s ease-in-out,
+      opacity 0.5s ease-in-out; 
+    opacity: 0; 
+    pointer-events: none; /* désactive la possibilité de cliquer dessus */
+}
+   
+   
+.newMenu-container.show {
+    top: 0; /* coulisse vers le bas */
+    opacity: 1; /* visible */
+    pointer-events: auto; /* active la possibilité de cliquer dessus */
+}
+   
+   
+.newMenu-container ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    height: 100%;
+}
+   
+   
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-top: 120px;
+    gap:50px;
+    overflow-y: auto;
+
+    img {
+        padding-top:150px;
+        max-width: 30%;
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 0 15px orange); /* pour réaliser ombre suivant silhouette du logo */
+    }
+}
+   
+.newMenu-container ul {
+    list-style-type: none; 
+    padding: 0; /* retire le padding par défaut */
+    margin: 0; /* retire la marge par défaut */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+   
+   
+.menu-content .menu-items a {
+    color: #000; /* couleur par défaut des liens */
+    text-decoration: none;
+    font-size: 3rem;
+    line-height: 5rem;
+}
+   
+.menu-content .nav-menu a:hover {
+    text-shadow: 0 0 15px orange; /* pour effet ombre sur texte */
+    cursor: pointer;
+}
+   
+.nav-menu a {
+    font-size:64px;
+    padding-top:50px;
+    text-align: center;
+}
+
+
+/* ------ ETAPE 5 : ajout des éléments animés sur new menu -------- */
+
+.newMenu-container {
+    &::before {
+        content: '';
+        display: block;
+        width: 172px;
+        height: 168px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("/wp-content/themes/foce/assets/images/orchid.png");
+        position: absolute;
+        left: -55px;
+        top: 180px;
+        z-index: 1;
+        animation: rotateFlower 10s linear infinite;
+    }
+   
+    &::after {
+        content: '';
+        display: block;
+        width: 626px;
+        height: 626px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("/wp-content/themes/foce/assets/images/hibiscus_footer.png");
+        position: absolute;
+        right: -300px;
+        bottom: -300px;
+        z-index: 1;
+        animation: rotateFlower 10s linear infinite;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+}
+
+.item-story {
+    display: inline-block;
+    margin: 0 10px; /* Espacement autour de l'image */
+    position: relative;
+ 
+ 
+    &::after {
+      content: '';
+      display: block;
+      width: 216px;
+      height: 216px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("/wp-content/themes/foce/assets/images/Sunflower.png");
+      position: absolute;
+      right:-300px;
+      top:-80px;
+      animation: rotateFlower 10s linear infinite;
+    }
+}
+
+.item-personnages {
+    display: inline-block;
+    margin: 0 10px; /* Espacement autour de l'image */
+    position: relative;
+ 
+ 
+    &::before {
+      content: '';
+      display: block;
+      width: 109px;
+      height: 98px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("../images/cat.png");
+      position: absolute;
+      left: -145px;
+      top: -120px;
+      animation: floatCats 8s ease-in-out infinite;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        width: 75px;
+        height: 75px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("/wp-content/themes/foce/assets/images/random_flower.png");
+        position: absolute;
+        right: -664px;
+        top: 115px;
+        animation: rotateFlower 10s linear infinite;
+      }
+} 
+
+.item-lieu {
+    display: inline-block;
+    margin: 0 10px; /* espacement autour de l'image */
+    position: relative;
+ 
+ 
+    &::before {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 70px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("/wp-content/themes/foce/assets/images/flower.png");
+      position: absolute;
+      left: -285px;
+      top: auto;
+      animation: rotateFlower 10s linear infinite;
+    }
+    &::after {
+        content: '';
+        display: block;
+        width: 154px;
+        height: 147px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("../images/black_cat.png");
+        position: absolute;
+        right:-295px;
+        top: 45px;
+        animation: floatCats 8s ease-in-out infinite;
+    }
+   
+} 
+
+.item-studioKoukaki {
+    display: inline-block;
+    margin: 0 10px; /* espacement autour de l'image */
+    position: relative;
+ 
+ 
+    &::before {
+      content: '';
+      display: block;
+      width: 105px;
+      height: 95px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("../images/orange_cat.png");
+      position: absolute;
+      left: -493px;
+      top: 157px;
+      animation: floatCats 8s ease-in-out infinite;
+    }
+}
+
+ 
