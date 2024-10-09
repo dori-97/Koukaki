@@ -1,33 +1,36 @@
 // ------ ETAPE 3 : initialisation de Swiper JS ------ //
 
 document.addEventListener('DOMContentLoaded', function () {
-  var swiper = new Swiper('.swiper-container', {
-    slidesPerView: 'auto',  // Un slide visible à la fois pour le test
-    spaceBetween: 10,  // Espacement entre les slides      
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+const swiperElement = document.querySelector(".swiper-container");
+
+if (swiperElement) {
+  const swiper = new Swiper(swiperElement, {
+    effect: "coverflow",
+    slidesPerView: 'auto',/* ajuste automatiquement en fonction de la largeur des slides */
+    spaceBetween: 0,
+    centeredSlides: true, /* désactive le centrage automatique des slides */
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
-    on: {
-      // Ajoute la classe 'active' après l'initialisation complète
-      init: function () {
-        let activeSlide = swiper.slides[swiper.activeIndex];
-        activeSlide.classList.add('active');
-      },
-      // Met à jour la classe 'active' quand le slide change
-      slideChangeTransitionStart: function () {
-        swiper.slides.forEach(function (slide) {
-          slide.classList.remove('active');  // Enlève la classe 'active' de tous les slides
-        });
-        let activeSlide = swiper.slides[swiper.activeIndex];
-        activeSlide.classList.add('active');  // Ajoute la classe 'active' au slide actif
-      }
-    }
+    
+    autoplay: {
+      delay: 1500,
+      disableOnInteraction: false,
+    },
+
+    coverflowEffect: {
+      rotate: 50, /* angle de rotation */
+      stretch: 0, /* espacement des slides */
+      depth: 100, /* profondeur des slides */
+      modifier: 1,
+      slideShadows: false, /* Ombres sur les slides */
+    },
   });
-  
-  console.log('Swiper avec gestion de classe active initialisé');
+} else {
+  console.error("L'élément conteneur n'a pas été trouvé");
+}
 });
+
+
+

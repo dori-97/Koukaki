@@ -1,28 +1,49 @@
-.swiper-container {
-    width: 100%;
-    height: 600px;
-    background-color: darkgoldenrod;
-}
+/* ------- ETAPE 3 - Gestion des classes CSS pour le slider et ------ */
+.swiper-container div {
+  width: 1440px !important;
+  height:300px;
+} 
 
-/*.swiper-slide {
-    background: brown;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
+/* Adaptation de la taille du conteneur en version tablette */
+@media (max-width:1024px) {
 
-.swiper-slide.active {
-    border: 3px solid #ff0000;
-    transform: scale(1.1);  /* Petit zoom pour le slide actif */
-    transition: transform 0.3s ease; /* Transition fluide pour l'effet de zoom */
+  .swiper-container.swiper-coverflow.swiper-3d.swiper-initialized.swiper-horizontal.swiper-ios.swiper-watch-progress {
+    width:1024px !important;
   }
 
+}
+/* Adaptation de la taille du conteneur en version mobile */
+@media (max-width:768px) {
+
+  .swiper-container.swiper-coverflow.swiper-3d.swiper-initialized.swiper-horizontal.swiper-ios.swiper-watch-progress {
+    width:768px !important;
+  }
+
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.swiper-backface-hidden .swiper-slide {
+  transform: translateZ(50px) !important; 
+}
+
+.swiper-slide.active {
+  transform: scale(10);  /* Petit zoom pour le slide actif */
+  transition: transform 0.3s ease; /* Transition fluide pour l'effet de zoom */
+}
+
 .swipper-button-next .swipper-button-prev {
-background-color: rgba(255, 255, 255, 0.8); /* Pour voir les boutons */
+  background-color: rgba(255, 255, 255, 0.8); /* Pour voir les boutons */
   border-radius: 50%; /* Arrondir les coins */
   padding: 10px; /* Ajout d'un peu d'espace */
 }
 
 .swiper-button-next:after, .swiper-button-prev:after {
-    color: #000; /* Couleur des flèches */
-  }
+  color: #000; /* Couleur des flèches */
+}
+
+
