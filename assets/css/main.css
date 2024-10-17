@@ -163,16 +163,17 @@
 		display: none;
 	}
 	.banner-fallback {
-		display: flex;
+		display: flex !important;
 	}
 	.banner img {
 		width: 100% !important;
 		height: auto;
 		margin-top: -16px;
+		top: 0 !important;
 	}
 	.floating-title img {
 		width: 50% !important;
-		position: absolute;
+		top: -150px !important;
 	}
 }
 
@@ -472,7 +473,7 @@ header, #new-menu {
 	right: 115px;
 }
 
-/*  adaptation responsive mobile  */
+/*  adaptation taille barre nav responsive mobile et tablette  */
 @media screen and (max-width: 700px) {
 	#new-menu {
 		width: 100%;
@@ -682,40 +683,6 @@ a:visited {
 	background-repeat: no-repeat;
 }
 
-/* Gestion en responsive mobile */
-@media (max-width: 700px) {
-	.newMenu-container::before {
-		content: '';
-		display: block;
-		width: 172px;
-		height: 168px;
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-image: url("/wp-content/themes/foce/assets/images/orchid.png");
-		position: absolute;
-		left: -55px;
-		top: 120px;
-		z-index: 0;
-		animation: rotateFlower 10s linear infinite;
-	}
-	.newMenu-container::after {
-		content: '';
-		display: block;
-		width: 626px;
-		height: 626px;
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-image: url("/wp-content/themes/foce/assets/images/hibiscus_footer.png");
-		position: absolute;
-		right: -300px;
-		bottom: -300px;
-		z-index: -1;
-		animation: rotateFlower 10s linear infinite;
-		background-size: contain;
-		background-repeat: no-repeat;
-	}
-}
-
 .item-story {
 	display: inline-block;
 	margin: 0 10px;
@@ -851,6 +818,49 @@ a:visited {
 		text-shadow: 0 0 15px #FF5C00;
 		/* pour effet ombre sur texte */
 		cursor: pointer;
+	}
+}
+
+/* Gestion en responsive mobile */
+@media (max-width: 700px) {
+	.newMenu-container::before {
+		content: '';
+		display: block;
+		width: 172px;
+		height: 168px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url("/wp-content/themes/foce/assets/images/orchid.png");
+		position: absolute;
+		left: -55px;
+		top: 120px;
+		z-index: 0;
+		animation: rotateFlower 10s linear infinite;
+	}
+	.newMenu-container::after {
+		content: '';
+		display: block;
+		width: 626px;
+		height: 626px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url("/wp-content/themes/foce/assets/images/hibiscus_footer.png");
+		position: absolute;
+		right: -300px;
+		bottom: -300px;
+		z-index: -1;
+		animation: rotateFlower 10s linear infinite;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	.item-personnages::before {
+		display: none;
+	}
+	.item-lieu::before {
+		display: none;
+	}
+	.item-lieu::after {
+		display: none;
 	}
 }
 

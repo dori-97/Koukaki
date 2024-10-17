@@ -32,17 +32,16 @@
 
 .story h2::after {
     content: '';
-      display: block;
-      width: 154px;
-      height: 154px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-image: url("/wp-content/themes/foce/assets/images/Sunflower.png");
-      position: absolute;
-      left: -390px;
-      top: 398px;
-      animation: rotateFlower 10s linear infinite;
-      
+    display: block;
+    width: 154px;
+    height: 154px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("/wp-content/themes/foce/assets/images/Sunflower.png");
+    position: absolute;
+    left: -390px;
+    top: 398px;
+    animation: rotateFlower 10s linear infinite;
 }
 
 .story h2::before{

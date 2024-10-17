@@ -37,7 +37,7 @@ header, #new-menu {
     }
 }    
    
-/*  adaptation responsive mobile  */
+/*  adaptation taille barre nav responsive mobile et tablette  */
 @media screen and (max-width: $breakpoint__large_phone) {
     #new-menu {
         width:100%;
@@ -252,46 +252,7 @@ a:visited {
         background-size: contain;
         background-repeat: no-repeat;
     }
-
 }
-
-/* Gestion en responsive mobile */
-@media (max-width:$breakpoint__large_phone) {
-    .newMenu-container {
-        &::before {
-            content: '';
-            display: block;
-            width: 172px;
-            height: 168px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-image: url("/wp-content/themes/foce/assets/images/orchid.png");
-            position: absolute;
-            left: -55px;
-            top:120px;
-            z-index: 0;
-            animation: rotateFlower 10s linear infinite;
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            width: 626px;
-            height: 626px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-image: url("/wp-content/themes/foce/assets/images/hibiscus_footer.png");
-            position: absolute;
-            right: -300px;
-            bottom: -300px;
-            z-index: -1;
-            animation: rotateFlower 10s linear infinite;
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-    }
-}
-
 
 .item-story {
     display: inline-block;
@@ -335,18 +296,18 @@ a:visited {
     }
 
     &::after {
-        content: '';
-        display: block;
-        width: 75px;
-        height: 75px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-image: url("/wp-content/themes/foce/assets/images/random_flower.png");
-        position: absolute;
-        right: -664px;
-        top: -115px;
-        animation: rotateFlower 10s linear infinite;
-      }
+      content: '';
+      display: block;
+      width: 75px;
+      height: 75px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("/wp-content/themes/foce/assets/images/random_flower.png");
+      position: absolute;
+      right: -664px;
+      top: -115px;
+      animation: rotateFlower 10s linear infinite;
+    }
 } 
 
 .item-lieu {
@@ -380,8 +341,7 @@ a:visited {
         left:410px;
         bottom:-125px;
         animation: floatCats 8s ease-in-out infinite;
-    }
-   
+    } 
 } 
 
 .item-studioKoukaki {
@@ -441,4 +401,55 @@ a:visited {
     }
 }
 
- 
+/* Gestion en responsive mobile */
+@media (max-width:$breakpoint__large_phone) {
+    .newMenu-container {
+        &::before {
+            content: '';
+            display: block;
+            width: 172px;
+            height: 168px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url("/wp-content/themes/foce/assets/images/orchid.png");
+            position: absolute;
+            left: -55px;
+            top:120px;
+            z-index: 0;
+            animation: rotateFlower 10s linear infinite;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            width: 626px;
+            height: 626px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url("/wp-content/themes/foce/assets/images/hibiscus_footer.png");
+            position: absolute;
+            right: -300px;
+            bottom: -300px;
+            z-index: -1;
+            animation: rotateFlower 10s linear infinite;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .item-personnages {
+        &::before {
+          display:none;
+        }
+    }
+
+    .item-lieu {
+        &::before {
+          display:none;
+        }
+
+        &::after {
+          display:none;
+        }
+    }    
+} 

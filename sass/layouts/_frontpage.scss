@@ -178,19 +178,19 @@
     }
     
     .banner-fallback {
-        display: flex;
+        display: flex !important;
     }
 
     .banner img {
         width: 100% !important;
         height:auto;
         margin-top:-16px;
+        top: 0 !important;;
     }
 
     .floating-title img {
         width:50% !important;
-        position:absolute;
-        
+        top:-150px !important;
     }
 } 
 
