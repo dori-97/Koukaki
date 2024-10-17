@@ -29,30 +29,28 @@
 		<nav id="site-navigation" class="main-navigation">
             <div class="site-title">
                 <a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a>
-            </div>
+            </div>           
             <button id="menu-burger" class="menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-                      
+        </nav>   
 
             <div id="new-menu" class="newMenu-container">
                 <div class="menu-content">
                     <img class="logo-menu" src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/logoburger.png'); ?>" alt="Koukaki logo">
 
                     <ul>
-                    <li><a class="menu-items item-story">Histoire</a></li>
-                    <li><a class="menu-items item-personnages">Personnages</a></li>
-                    <li><a class="menu-items item-lieu">Lieu</a></li>
-                    <li><a class="menu-items item-studioKoukaki">Studio Koukaki</a></li>
+                    <li class="menu-items item-story"><a href="#story">Histoire</a></li>
+                    <li class="menu-items item-personnages"><a href="#characters">Personnages</a></li>
+                    <li class="menu-items item-lieu"><a href="#place">Lieu</a></li>
+                    <li class="menu-items item-studioKoukaki"><a href="#studio">Studio Koukaki</a></li>
                     </ul>
 
                     <div class="footer-link">
                     <a href="#">Studio Koukaki</a>
                     </div>
                 </div>
-            </div>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
-    </script>
+            </div>	
+</header><!-- #masthead -->

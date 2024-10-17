@@ -1,5 +1,4 @@
 // ------ ETAPE 3 : initialisation de Swiper JS ------ //
-
 document.addEventListener('DOMContentLoaded', function () {
 const swiperElement = document.querySelector(".swiper-container");
 
@@ -9,10 +8,6 @@ if (swiperElement) {
     slidesPerView: 'auto',/* ajuste automatiquement en fonction de la largeur des slides */
     spaceBetween: 0,
     centeredSlides: true, /* désactive le centrage automatique des slides */
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
     
     autoplay: {
       delay: 1500,

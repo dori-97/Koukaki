@@ -1,39 +1,65 @@
 /* -------- ETAPE 5 : Réalisation du header modifié -------  */
 
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* évite le débordement horizontal embêtant */
+}
+
 /* gère positionnement de l'en-tête */
 .site-header {
     position: fixed;
-    top: 0;
-    left: 0;
+    top:0;
     width: 100%;
-    z-index: 999; 
+    z-index: 1000; 
+}
+
+header, #new-menu {
+    width: 100%;
+    max-width: 100vw;
 }
    
    
 /* gère positionnement de barre nav */
 .main-navigation {
     position: relative;
-    z-index: 2000 !important; /* Supérieur à l'en-tête */
+    z-index: 1001 !important; /* Supérieur à l'en-tête */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: pink;
+    width:100%;
+   
 
-    /*button {
-       margin-right:100px;
-    }*/
-
-    
-}
-      
+    button {
+       position:absolute;
+       right:115px;
+    }
+}    
    
 /*  adaptation responsive mobile  */
-/*@media screen and (max-width: 782px) {
-    .main-navigation button {
-      margin-right: 20px;
+@media screen and (max-width: $breakpoint__large_phone) {
+    #new-menu {
+        width:100%;
     }
-}*/
+
+    .main-navigation {
+        width:100%;
+
+
+        button {
+            position:relative;
+            right:0;
+        }
+    }
+}
+
+@media screen and (max-width:$breakpoint__tablet) {
+    #new-menu {
+        width:100%;
+    }
+}
+   
    
    
 /* gérer le titre du site */
@@ -41,6 +67,7 @@
     flex-grow: 1; /* prend tout l'espace dispo */
     text-align: center;
     margin: 0;
+    z-index:1005;
 }
    
    
@@ -65,7 +92,7 @@
     border: 8px solid black;
     cursor: pointer;
     position: relative;
-    z-index:2005;
+    z-index:1005;
 }
    
    
@@ -103,10 +130,6 @@
 .menu-toggle.active span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
 }
-
-/*.site-title {
-    z-index:2005;
-}*/
    
 .newMenu-container {
     position: fixed;
@@ -115,7 +138,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(255, 245, 233, 1);
-    z-index: 1000; /* inférieur à la main navigation */
+    z-index: 999; /* inférieur à la main navigation */
     transition:
       top 0.5s ease-in-out,
       opacity 0.5s ease-in-out; 
@@ -146,47 +169,52 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    padding-top: 120px;
-    gap:50px;
-    overflow-y: auto;
 
-    img {
-        padding-top:150px;
+
+    img /* logo-menu */ {
+        padding-top:115px;
         max-width: 30%;
         height: auto;
         object-fit: contain;
-        filter: drop-shadow(0 0 15px orange); /* pour réaliser ombre suivant silhouette du logo */
+        filter: drop-shadow(0 0 15px #FF5C00); /* pour réaliser ombre suivant silhouette du logo */
+        animation: float 10s infinite;
+    }
+
+    ul {
+        margin:0;
+        padding-left:0;
+        justify-content: flex-start;
+    }
+
+    li {
+        display:flex;
+        flex-direction: column;
+        text-align:center;
+    }
+
+    a {
+        padding-top:20px;
     }
 }
    
-.newMenu-container ul {
-    list-style-type: none; 
-    padding: 0; /* retire le padding par défaut */
-    margin: 0; /* retire la marge par défaut */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-   
-   
 .menu-content .menu-items a {
-    color: #000; /* couleur par défaut des liens */
     text-decoration: none;
     font-size: 3rem;
     line-height: 5rem;
 }
    
-.menu-content .nav-menu a:hover {
-    text-shadow: 0 0 15px orange; /* pour effet ombre sur texte */
+.menu-content .menu-items a:hover {
+    text-shadow: 0 0 15px #FF5C00; /* pour effet ombre sur texte */
     cursor: pointer;
 }
-   
-.nav-menu a {
-    font-size:64px;
-    padding-top:50px;
-    text-align: center;
+
+a:hover {
+    color: black;
+}
+
+a:visited {
+    color:black;
+    text-shadow: 0 0 15px #FF5C00; 
 }
 
 
@@ -203,7 +231,7 @@
         background-image: url("/wp-content/themes/foce/assets/images/orchid.png");
         position: absolute;
         left: -55px;
-        top: 180px;
+        top:120px;
         z-index: 1;
         animation: rotateFlower 10s linear infinite;
     }
@@ -227,6 +255,44 @@
 
 }
 
+/* Gestion en responsive mobile */
+@media (max-width:$breakpoint__large_phone) {
+    .newMenu-container {
+        &::before {
+            content: '';
+            display: block;
+            width: 172px;
+            height: 168px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url("/wp-content/themes/foce/assets/images/orchid.png");
+            position: absolute;
+            left: -55px;
+            top:120px;
+            z-index: 0;
+            animation: rotateFlower 10s linear infinite;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            width: 626px;
+            height: 626px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url("/wp-content/themes/foce/assets/images/hibiscus_footer.png");
+            position: absolute;
+            right: -300px;
+            bottom: -300px;
+            z-index: -1;
+            animation: rotateFlower 10s linear infinite;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+
 .item-story {
     display: inline-block;
     margin: 0 10px; /* Espacement autour de l'image */
@@ -242,8 +308,8 @@
       background-repeat: no-repeat;
       background-image: url("/wp-content/themes/foce/assets/images/Sunflower.png");
       position: absolute;
-      right:-300px;
-      top:-80px;
+      left:350px;
+      top:-112px;
       animation: rotateFlower 10s linear infinite;
     }
 }
@@ -263,8 +329,8 @@
       background-repeat: no-repeat;
       background-image: url("../images/cat.png");
       position: absolute;
-      left: -145px;
-      top: -120px;
+      left:-154px;
+      top:-61px;
       animation: floatCats 8s ease-in-out infinite;
     }
 
@@ -278,7 +344,7 @@
         background-image: url("/wp-content/themes/foce/assets/images/random_flower.png");
         position: absolute;
         right: -664px;
-        top: 115px;
+        top: -115px;
         animation: rotateFlower 10s linear infinite;
       }
 } 
@@ -298,7 +364,7 @@
       background-repeat: no-repeat;
       background-image: url("/wp-content/themes/foce/assets/images/flower.png");
       position: absolute;
-      left: -285px;
+      left: -368px;
       top: auto;
       animation: rotateFlower 10s linear infinite;
     }
@@ -311,8 +377,8 @@
         background-repeat: no-repeat;
         background-image: url("../images/black_cat.png");
         position: absolute;
-        right:-295px;
-        top: 45px;
+        left:410px;
+        bottom:-125px;
         animation: floatCats 8s ease-in-out infinite;
     }
    
@@ -333,9 +399,45 @@
       background-repeat: no-repeat;
       background-image: url("../images/orange_cat.png");
       position: absolute;
-      left: -493px;
-      top: 157px;
+      left:-330px;
+      top: 142px;
       animation: floatCats 8s ease-in-out infinite;
+    }
+}
+
+/* Gestion responsive tablette */
+@media (max-width:$breakpoint__tablet) {
+    .item-personnages {
+     
+        &::before {
+          content: '';
+          left:-50px;
+          top:-61px;
+        }
+    }
+
+    .item-lieu {
+        &::before {
+            content: '';
+            left:-200px;
+        }
+
+        &::after {
+            content: '';
+            left:300px;
+        }
+    }
+
+    .item-studioKoukaki { 
+        &::before {
+            content: '';
+            left:-100px;
+        }
+    }
+
+    .menu-content .menu-items a:hover {
+        text-shadow: 0 0 15px #FF5C00; /* pour effet ombre sur texte */
+        cursor: pointer;
     }
 }
 

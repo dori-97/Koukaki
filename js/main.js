@@ -1,14 +1,4 @@
-// ---- ETAPE 1 : Afficher fade in toutes les sections en même temps ----- //
-document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('.section'); 
-    console.log(sections);
-
-    sections.forEach((section) => {
-        section.classList.add('section-visible');
-    });
-});
-
-//----- ETAPE 2 : Gestion des apparitions de titres sur sections ----//
+//----- ETAPE 1 : Gestion des apparitions de titres sur sections ----//
 document.addEventListener('DOMContentLoaded', function() {
     const titles = document.querySelectorAll('.section-title');
     console.log(titles);
@@ -40,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(parallaxEffect);
 
    /* Position à laquelle le parallaxe doit s'arrêter */
-   const sectionStory = document.getElementById('#story'); 
+   const sectionStory = document.getElementById('story'); 
 
     const stopParallaxAt = sectionStory.getBoundingClientRect().bottom + window.scrollY; /* Position d'arrêt */
     console.log('Position d\'arrêt pour le parallaxe:', stopParallaxAt); 
@@ -48,9 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
     /* Effet de parallaxe */
     window.addEventListener('scroll', function() {
        const scrollPosition = window.scrollY; /* Récupère la position de scroll */
-       const parallaxSpeed = 0.5; 
+       const parallaxSpeed = 0.5; /* vitesse souhaitée pour effet parallaxe */
 
-       /* N'applique l'effet de parallaxe que si on est pas encore dans la section suivante */
+       /* Vérifie que position de scroll actuelle est bien avant le point d'arrêt */
        if (scrollPosition < stopParallaxAt) { 
            /* Applique l'effet de parallaxe à l'élément */
            parallaxEffect.style.transform = `translateY(${scrollPosition * parallaxSpeed}px)`;
@@ -64,40 +54,50 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     var clouds = document.querySelector('.clouds');
     var placeSection = document.querySelector('#place');
-    console.log(placeSection);
-   
+    
+    // Position initiale et finale des nuages (en pixels)
+    var startPosition = -250;
+    var endPosition = -550;
+    
+    function moveClouds() {
+        // Obtenir la position de la section par rapport au haut de la fenêtre
+        var sectionTop = placeSection.getBoundingClientRect().top;
+        
+        // Hauteur de la fenêtre
+        var windowHeight = window.innerHeight;
+        
+        // Calculer le pourcentage de défilement
+        var scrollPercentage = (windowHeight - sectionTop) / windowHeight;
+        
+        // S'assurer que le pourcentage est entre 0 et 1
+        scrollPercentage = Math.max(0, Math.min(1, scrollPercentage));
+        
+        // Calculer la nouvelle position des nuages
+        var newPosition = startPosition + (endPosition - startPosition) * scrollPercentage;
+        
+        // Appliquer la nouvelle position
+        clouds.style.transform = 'translateX(' + newPosition + 'px)';
+    }
 
-var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        /* déplace nuages vers la gauche si section visible */
-        clouds.style.transform = 'translateX(-550px)';
-      } else {
-        /* remet nuages à la position initiale si section plus visible */
-        clouds.style.transform = 'translateX(-250px)';
-      }
-    });
-  });
-
-  observer.observe(placeSection);
- });
+    // Exécuter moveClouds à chaque défilement
+    window.addEventListener('scroll', moveClouds);
+    
+    // Exécuter moveClouds une fois au chargement
+    moveClouds();
+});
  
-/* -------- ETAPE 5 : Activation du menu toggle ------- */
+/* -------- ETAPE 5 : Activation du menu toggle avec J Query ------- */
 
- document.addEventListener('DOMContentLoaded', function() {
-    const burgerMenu = document.getElementById('menu-burger');
-    const menuModal = document.getElementById('new-menu');
-   
-   
-    burgerMenu.addEventListener('click', function() {
-        this.classList.toggle('active');
-        menuModal.classList.toggle('show'); /* bascule de classe pour montrer le nouveau menu */
+/* privilégier "jQuery" à la place de "$" pour éviter conflits avec autres scripts */
+jQuery(document).ready(function() {
+    const $burgerMenu = jQuery('#menu-burger');
+    const $menuModal = jQuery('#new-menu');
+    
+    $burgerMenu.on('click', function() {
+        jQuery(this).toggleClass('active');
+        $menuModal.toggleClass('show');
     });
 });
-
-  
-
-
 
 
 

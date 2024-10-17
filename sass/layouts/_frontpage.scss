@@ -1,6 +1,5 @@
 /* -------- ETAPE 1 - Ajout des fleurs dans la section Oscars ----------- */ 
 
-
 #oscars {
     position: relative;
 	display: flex;
@@ -17,8 +16,7 @@
     z-index:2;
     animation: rotateFlower 10s linear infinite; /* pour gérer rotation de cette fleur */
 }
- 
- 
+
 #oscars::after {
     content: url('/wp-content/themes/foce/assets/images/orchid.png');
     width:172px;
@@ -29,7 +27,8 @@
     animation: rotateFlower 10s linear infinite; /* pour gérer rotation de cette fleur */
 }
 
-/* ----- ETAPE 1 - Gestion du titre avec rectangle orange en dessous + img supplémentaire Oscars ------- */
+
+/* ----- ETAPE 1 - Section oscars: Gestion du titre avec rectangle orange en dessous + img supplémentaire ------- */
 
 .oscars-title {
     opacity: 1; 
@@ -67,12 +66,65 @@
     gap:20px;
 }
 
+/*Gestion section oscars responsive mobile*/
+@media (max-width:$breakpoint__large_phone) {
+
+    #oscars {
+        padding-right:0 !important;
+    }
+
+    .oscars-container {
+        display:flex;
+        flex-direction:column;
+        
+        width:100%;
+    }
+
+    .oscars-title h3 {
+        text-align:center;
+        background-size: cover;
+        margin-left:0 !important;
+    }
+
+    #oscars::before {
+        top:-1em;
+    }
+
+    #oscars::after {
+        bottom:118px;
+    }
+}
+
+/* Gestion responsive section oscars version tablette */
+@media (max-width:$breakpoint__tablet) {
+    
+    .oscars-container {
+        img {
+            width:153px !important;
+            height:71px !important;
+        }
+
+        h3 {
+            background-size: cover;
+        }
+    }
+
+    #oscars::before {
+        top:3em !important;
+        left:26.5em !important;
+    }
+
+    #oscars::after {
+        bottom:33px !important;
+    }
+}
+
 
 /* ------ ETAPE 2 : Gestion de la vidéo sur la bannière ------- */
 .banner {
     background-image: none !important;
     min-width:100% !important;
-    z-index:1;
+    z-index:-1;
     overflow:hidden;
 }
 
@@ -91,7 +143,7 @@
     width: auto;
     height: auto;
     z-index: -1;
-    transform: translate(-50%, -50%); /* Centrer la vidéo */
+    transform: translate(-50%, -50%); /* Centrer la vidéo et la met en fond de bannière */
 }
 
 .banner-fallback {
@@ -100,14 +152,27 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; 
+    height: auto;
     background-size: cover; 
-    z-index: 0; 
+    z-index: -1; 
 }
 
 
-/* Cache la vidéo de la bannière sur mobile + gestion responsive tablette */
-@media  (max-width: 768px) {
+
+/* Modification taille image bannière en responsive mobile */
+@media (max-width:$breakpoint__large_phone) {
+    .banner-fallback {
+        padding-top:100px !important;
+    }
+
+    .banner {
+        min-height:300px !important;
+    }
+}
+
+
+/* Cache la vidéo de la bannière sur mobile et gestion de l'affichage bannière en responsive mobile */
+@media  (max-width: $breakpoint__large_phone) {
     .hero-video {
       display: none;
     }
@@ -118,13 +183,32 @@
 
     .banner img {
         width: 100% !important;
+        height:auto;
+        margin-top:-16px;
     }
 
-}    
+    .floating-title img {
+        width:50% !important;
+        position:absolute;
+        
+    }
+} 
 
-@media (max-width: 1024px) {
+/* Gestion vidéo header en version responsive tablette */
+@media (max-width:$breakpoint__tablet) {
     .hero-video {
-        width:1024px !important;
+        width:100%;
+        object-fit: contain !important;
+    }
+
+    .banner {
+        min-height:auto;
+        padding-top:70%;
+    }
+
+    .banner img {
+        position:absolute;
+        top:-350px;
     }
 }
 
@@ -181,6 +265,45 @@
         filter: blur(12px); /* pour appliquer effet de flou sur nuages */
     } 
 }
+
+
+/* Gestion du titre dans la section story pour le mettre à gauche */
+.story #characters h3 {
+    text-align:start;
+    background-position: 130px center;
+    padding-left:180px;
+}
+
+/* ------- RESPONSIVE : Gestion du style du responsive mobile ------- */
+
+@media (max-width:$breakpoint__large_phone) {
+    #studio {
+        h2 {
+            line-height:35px;
+        }
+    }
+
+    #characters {
+        h3 {
+            line-height:28px;
+        }
+    }
+
+    #place {
+        h3 {
+            line-height:35px;
+        }
+    }
+
+    .story #characters h3 {
+        text-align:center;
+        background-position: center;
+        background-size:contain;
+        padding-left:45px !important;
+    }
+}
+
+
 
 
       

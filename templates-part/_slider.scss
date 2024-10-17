@@ -5,20 +5,29 @@
 } 
 
 /* Adaptation de la taille du conteneur en version tablette */
-@media (max-width:1024px) {
+@media (max-width:$breakpoint__tablet) {
 
   .swiper-container.swiper-coverflow.swiper-3d.swiper-initialized.swiper-horizontal.swiper-ios.swiper-watch-progress {
-    width:1024px !important;
+    width:100% !important;
   }
 
+  .swiper-container div {
+    width:100% !important;
+    max-width: 700px;
+  }
 }
-/* Adaptation de la taille du conteneur en version mobile */
-@media (max-width:768px) {
+
+/*Adaptation de la taille du conteneur en version mobile */
+@media (max-width:$breakpoint__large_phone) {
 
   .swiper-container.swiper-coverflow.swiper-3d.swiper-initialized.swiper-horizontal.swiper-ios.swiper-watch-progress {
-    width:768px !important;
+    width:100% !important;
+    max-width: 300px;
   }
-
+  .swiper-container div {
+    width:100% !important;
+    max-width: 300px;
+  }
 }
 
 .swiper-slide {
@@ -27,23 +36,9 @@
   align-items: center;
 } 
 
-.swiper-backface-hidden .swiper-slide {
-  transform: translateZ(50px) !important; 
-}
-
 .swiper-slide.active {
   transform: scale(10);  /* Petit zoom pour le slide actif */
   transition: transform 0.3s ease; /* Transition fluide pour l'effet de zoom */
-}
-
-.swipper-button-next .swipper-button-prev {
-  background-color: rgba(255, 255, 255, 0.8); /* Pour voir les boutons */
-  border-radius: 50%; /* Arrondir les coins */
-  padding: 10px; /* Ajout d'un peu d'espace */
-}
-
-.swiper-button-next:after, .swiper-button-prev:after {
-  color: #000; /* Couleur des flèches */
 }
 
 

@@ -1,11 +1,11 @@
-@import 'abstracts/abstracts';
-
+@import "abstracts/variables/breakpoints";
 
 @import "layouts/frontpage";
-
 
 @import "animations/animations";
 
 @import "base/elements/footer";
 
-@import "templates-part/_slider";
+@import "templates-part/slider";
+
+@import "layouts/navigation";

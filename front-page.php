@@ -5,7 +5,9 @@ get_header();
 
     <main id="primary" class="site-main">
         <section class="section banner">
-            <img class="logo-image floating-title parallax" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
+            <div class="floating-title">
+            <img class="logo-image" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
+            </div>
             <img class="banner-fallback" src="<?php echo get_template_directory_uri() . '/assets/images/banner.png'; ?> " alt="Image de fallback">
             <video class="hero-video" autoplay loop muted poster="/wp-content/themes/foce/assets/images/banner.png">
             <source src="<?php echo get_stylesheet_directory_uri() . '/assets/video/video.mp4'; ?>" type="video/mp4">
@@ -13,7 +15,7 @@ get_header();
             </video>
         </section>
 
-        <section id="#story" class="section story">
+        <section id="story" class="section story">
             <h2 class="section-title">L'histoire</h2>
             <article id="" class="story__article">
                 <p><?php echo get_theme_mod('story'); ?></p>
@@ -33,6 +35,11 @@ get_header();
                     <h3 class="section-title">Le Lieu</h3>
                     <p><?php echo get_theme_mod('place'); ?></p>
                 </div>
+                <div class="clouds">
+               <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/big_cloud.png" alt="Gros nuage" class="big-cloud blur">
+               <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/little_cloud.png" alt="Petit nuage" class="little-cloud blur">
+           </div>
+
 
             </article>
         </section>
@@ -46,7 +53,7 @@ get_header();
             </div>
         </section>
 
-        <?php include 'nominations.php'; ?>
+        <?php include 'templates-part/nominations.php'; ?>
 
     </main><!-- #main -->
 

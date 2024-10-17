@@ -1,4 +1,4 @@
-/* ----- ETAPE 1 : Gestion des Fade in et fade Down des sections ----- */
+/* ----- ETAPE 1 : Gestion des Fade in des sections ----- */
 
 @keyframes fadeIn {
     from {
@@ -11,39 +11,8 @@
     }
 }
 
-@keyframes fadeDown {
-    from {
-        opacity:0;
-        transform:translateY(-200px);
-    }
-    to {
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
 .section {
-    opacity: 0; 
-   animation: fadeIn 1s ease-in forwards; /* L'animation dure 1 seconde */
-   transform: translateY(200px);
-}
-
-
-.section-visible {
-    opacity: 1; 
-    transform: translateY(0); // Retour à la position normale
-
-}
-
-.banner{
-    opacity:0;
-    animation: fadeDown 1s ease-in forwards; 
-   transform: translateY(-200px);
-}
-
-.banner-visible {
-    opacity:1;
-    transform:translateY(0); 
+    animation: fadeIn 1s ease-in forwards; 
 }
 
 /* ---- ETAPE 1 : Faire tourner toutes les fleurs de la page ------*/
@@ -62,8 +31,18 @@
 }
 
 .story h2::after {
-    left:-6.4em;
-    animation: rotateFlower 10s linear infinite; 
+    content: '';
+      display: block;
+      width: 154px;
+      height: 154px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("/wp-content/themes/foce/assets/images/Sunflower.png");
+      position: absolute;
+      left: -390px;
+      top: 398px;
+      animation: rotateFlower 10s linear infinite;
+      
 }
 
 .story h2::before{
@@ -84,7 +63,7 @@
 
 
 
-/*----- ETAPE 1 : Gestion des classes pour apparition des titres ---- */
+/*----- ETAPE 1 : Gestion des classes pour apparition des titres en complément du JS ---- */
 
 .section-title {
     opacity: 0; 
@@ -101,28 +80,37 @@
 /* ------ ETAPE 2 : Titre flottant ------*/
 @keyframes float {
     0% {
-        transform: translateY(0); /* Position initiale */
+        transform: translateY(0); 
     }
     50% {
-        transform: translateY(-30px); /* Bouge un peu */
+        transform: translateY(-30px); 
     }
     100% {
-        transform: translateY(0); /* Retourne à la position initiale */
+        transform: translateY(0); 
     }
+} 
+
+.floating-title {
+    position:relative;
+    display:flex;
+    justify-content: center;
+    width:100%;
+    z-index:10;
+    animation: float 3s ease-in-out infinite !important;
 }
 
-/*.floating-title {
-    font-size: 3rem;
-    text-align: center;
-    color: #333;
-    animation: float 3s ease-in-out infinite;
-    border: 1px solid red;
-}*/
 
-// --------- ETAPE 2 : Classe pour l'effet de parallaxe ------- //
+/* -------- ETAPE 5 : Effet de flottement des chats avec keyframes ------ */
 
-.parallax {
-    position: relative; /* Assure que les éléments parallaxes sont bien positionnés */
-    z-index: 1; /* Place les éléments devant la vidéo */
-    width: 100%; /* Pour s'assurer qu'ils prennent toute la largeur */
-}
+@keyframes floatCats {
+    0% {
+      transform: translate(-50%, -50%) translateY(0);
+    }
+    50% {
+      transform: translate(-50%, -50%) translateY(-35px);
+    }
+    100% {
+      transform: translate(-50%, -50%) translateY(0);
+    }
+   }
+   
